@@ -1,5 +1,6 @@
 package com.androiddevs.runningappyt.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,14 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_run.view.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     inner class RunViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    private var runList = ArrayList<com.androiddevs.runningappyt.model.Run>()
+
 
     val diffCallback = object : DiffUtil.ItemCallback<Run>() {
         override fun areItemsTheSame(oldItem: Run, newItem: Run): Boolean {
@@ -67,8 +72,26 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
             val caloriesBurned = "${run.caloriesBurned}kcal"
             tvCalories.text = caloriesBurned
+
+            if(differ.currentList[position].extended) {
+                holder.itemView.ivRunImage.visibility = View.VISIBLE
+            }else {
+                holder.itemView.ivRunImage.visibility = View.GONE
+            }
+        }
+
+        holder.itemView.setOnClickListener{
+            differ.currentList[position].extended = !differ.currentList[position].extended
+            if(differ.currentList[position].extended) {
+                holder.itemView.ivRunImage.visibility = View.GONE
+            }else {
+                holder.itemView.ivRunImage.visibility = View.VISIBLE
+            }
+            notifyDataSetChanged()
+            notifyItemChanged(position)
         }
     }
+
 }
 
 

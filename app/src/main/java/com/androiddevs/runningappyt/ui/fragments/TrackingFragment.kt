@@ -41,15 +41,12 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
     private var isTracking = false
     private var pathPoints = mutableListOf<Polyline>()
-    private var lastPoint = mutableListOf<Polyline>()
 
     private var map: GoogleMap? = null
 
     private var curTimeInMillis = 0L
-    private var oldTimeInMillis = 0L
 
     private var menu: Menu? = null
-
 
 
     @set:Inject
