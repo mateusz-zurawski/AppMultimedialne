@@ -15,7 +15,7 @@
     <color name="md_blue_A700">#2962FF</color>
     <color name="colorAccent">#FFE600</color>
     <color name="errorColor">#D50000</color>
-
+    <color name="cardColor">#B3B3B3</color>
 
     <color name="selectColor">#FFFFFF</color>
     <color name="noSelectColor">#C0C0C0</color>
