@@ -5,13 +5,12 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androiddevs.runningappyt.db.Run
+import com.androiddevs.runningappyt.db.RunDAO
 import com.androiddevs.runningappyt.other.SortType
-import com.androiddevs.runningappyt.repositories.MainRepository
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class MainViewModel @ViewModelInject constructor(
-    val mainRepository: MainRepository
+    val mainRepository: RunDAO
 ): ViewModel() {
 
     private val runsSortedByDate = mainRepository.getAllRunsSortedByDate()
